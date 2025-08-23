@@ -1,17 +1,19 @@
 services:
-  openwebui:
-    image: ghcr.io/open-webui/open-webui:main
-    environment:
-      - VIRTUAL_HOST="webui.gchalakov.com"
-      - LETSENCRYPT_HOST="webui.gchalakov.com"
+  webui:
+    image: ghcr.io/open-webui/open-webui
+    container_name: webui
+    restart: unless-stopped
     networks:
       - net
+    environment:
+      - VIRTUAL_HOST=webui.gchalakov.com
+      - LETSENCRYPT_HOST=webui.gchalakov.com
     volumes:
       - open-webui:/app/backend/data
-volumes:
-  open-webui:
 
 networks:
   net:
     external: true
 
+volumes:
+  open-webui:
