@@ -4,16 +4,13 @@ services:
     container_name: webui
     restart: unless-stopped
     networks:
-      - net
+      - reverse-proxy_net
     environment:
-      - VIRTUAL_HOST=webui.gchalakov.com
-      - LETSENCRYPT_HOST=webui.gchalakov.com
+      - VIRTUAL_HOST=webui.buldev.com
+      - LETSENCRYPT_HOST=webui.buldev.com
     volumes:
-      - open-webui:/app/backend/data
+      - ./data:/app/backend/data
 
 networks:
-  net:
+  reverse-proxy_net:
     external: true
-
-volumes:
-  open-webui:
