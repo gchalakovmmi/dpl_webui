@@ -10,6 +10,10 @@ services:
       - LETSENCRYPT_HOST=webui.buldev.com
     volumes:
       - ./data:/app/backend/data
+    dns:
+      - 8.8.8.8  # Google DNS
+      - 8.8.4.4  # Google DNS secondary
+      - 1.1.1.1  # Cloudflare DNS (optional)
 
 networks:
   reverse-proxy_net:
